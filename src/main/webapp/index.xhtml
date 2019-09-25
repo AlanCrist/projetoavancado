@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+	<title>Cadastro Contato</title>
+</h:head>
+<h:body>
+
+	<h:form>
+	
+		<h:panelGrid columns="2">
+		
+			<h:outputLabel value="ID"/>
+			<h:inputText value="#{contatoController.contato.id}" readonly="true" />
+		
+			<h:outputLabel for="nome" value="Digite seu Nome" />
+			<h:inputText id="nome" value="#{contatoController.contato.nome}" />
+			
+			<h:outputLabel for="email" value="Digite E-mail" />
+			<h:inputText id="email" value="#{contatoController.contato.email}" />
+			
+			<h:panelGrid columns="4">
+			
+				<h:commandButton value="CADASTRAR" action="#{contatoController.salvarContato}"/>
+				<h:commandButton value="Listar" action="#{contatoController.listarContatos}"/>
+				<h:commandButton value="+" action="#{contatoController.novoContato}"/>
+				<h:commandButton value="X" action="#{contatoController.removeContato}"/>
+			
+			</h:panelGrid>
+			
+		</h:panelGrid>
+		
+	</h:form>
+	
+	<h:form>
+		<p:dataTable id="contatos_tb" var="contato" value="#{contatoController.listarContatos()}">
+		
+			<p:column headerText="Nome">
+				<h:outputText value="contato.nome"/>
+			</p:column>
+			
+			<p:column headerText="E-mail">
+				<h:outputText value="contato.email"/>
+			</p:column>
+		
+		</p:dataTable>
+	
+	
+	</h:form>
+	
+		</h:body>
+</html>
